@@ -20,12 +20,15 @@ from app.views import *
 
 urlpatterns = [
     path('', home, name='home'),
-
+        # registration/login pages
     path("login/", loginPage, name="login"),
     path("logout/", logoutUser, name="logout"),
     path("register/", register, name="register"),
-
+        # user pages
     path("user/", userPage, name="user"),
-
+        # order pages
+    path("cart/", cart, name="cart"),
+    path("order-status", statusPage, name="status"),
+        # admin pages
     path('admin/', admin.site.urls),
 ]

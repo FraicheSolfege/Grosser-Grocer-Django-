@@ -45,10 +45,6 @@ def logoutUser(request):
 
 @unauthenticated_user
 def register(request):
-    # if request.user.is_authenticated:
-    #     return redirect('home')
-    # else:
-    #     form = CreateUserForm()
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -56,23 +52,32 @@ def register(request):
             user = form.save()
             username =form.cleaned_data.get('username')
 
+
+        
             group = Group.objects.get(name='customer')
             user.groups.add(group)
 
             
             messages.success(request, 'Account was created for ' + username)
             return redirect('login')
+        
     context = {'form': form}
-
-
     return render(request, 'register.html' , context)
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+@allowed_users(allowed_roles=['admin', 'customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
     print(orders)
 
     context = {'orders': orders}
     return render(request, 'user.html', context)
+
+def cart(request):
+    context = {}
+    return render(request, 'cart.html', context)
+
+def statusPage(request):
+    context = {}
+    return render(request, 'status.html', context)
