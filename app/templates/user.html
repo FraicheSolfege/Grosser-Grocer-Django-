@@ -2,4 +2,11 @@
 {% block content %}
     <h1>USER HOME PAGE</h1>
     <p>{{ user.username }}</p>
+    {% comment %} orders {% endcomment %}
+    <h2>Orders</h2>
+    <ul>
+        {% for order in orders %}
+            <li>{{ order.name }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

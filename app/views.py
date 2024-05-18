@@ -16,7 +16,12 @@ from .decorators import *
 # @allowed_users(allowed_roles=['admin'])
 @admin_only
 def home(request):
-    return render(request, 'home.html')
+    # passing users into context 
+    customers = Customer.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
+    context = {'customers': customers, 'orders': orders, 'products': products}
+    return render(request, 'home.html', context)
 
 @unauthenticated_user
 def loginPage(request):
@@ -53,7 +58,7 @@ def register(request):
 
             group = Group.objects.get(name='customer')
             user.groups.add(group)
-            
+
             
             messages.success(request, 'Account was created for ' + username)
             return redirect('login')
@@ -62,6 +67,12 @@ def register(request):
 
     return render(request, 'register.html' , context)
 
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customer'])
 def userPage(request):
-    context = {}
+    orders = request.user.customer.order_set.all()
+    print(orders)
+
+    context = {'orders': orders}
     return render(request, 'user.html', context)
