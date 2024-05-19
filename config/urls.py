@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', home, name='home'),
         # registration/login pages
@@ -26,9 +29,10 @@ urlpatterns = [
     path("register/", register, name="register"),
         # user pages
     path("user/", userPage, name="user"),
+    path("shopping/", shoppingPage, name="shopping"),
         # order pages
     path("cart/", cart, name="cart"),
     path("order-status", statusPage, name="status"),
         # admin pages
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -17,10 +17,9 @@ from .decorators import *
 @admin_only
 def home(request):
     # passing users into context 
-    customers = Customer.objects.all()
     orders = Order.objects.all()
     products = Product.objects.all()
-    context = {'customers': customers, 'orders': orders, 'products': products}
+    context = {'orders': orders, 'products': products}
     return render(request, 'home.html', context)
 
 @unauthenticated_user
@@ -68,7 +67,7 @@ def register(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin', 'customer'])
 def userPage(request):
-    orders = request.user.customer.order_set.all()
+    orders = request.user.order_set.all()
     print(orders)
 
     context = {'orders': orders}
@@ -81,3 +80,9 @@ def cart(request):
 def statusPage(request):
     context = {}
     return render(request, 'status.html', context)
+
+def shoppingPage(request):
+    orders = Order.objects.all()
+    products = Product.objects.all()
+    context = { 'orders': orders, 'products': products}
+    return render(request, 'shopping.html', context)

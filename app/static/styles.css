@@ -18,3 +18,13 @@ body{
     margin-right: 10px;
 }
 
+.productsBrowser{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.productIMGs{
+    height: 200px;
+    width: 150px;
+}

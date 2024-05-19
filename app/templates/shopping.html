@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Browse Our Goods!</h1>
+<ul  class="productsBrowser">
+    {% for product in products %}
+    <li>
+        {% if product.image%}
+        <img src="{{ product.image.url }}" class="productIMGs">
+        {{ product.name }} - {{ product.price }}
+        {% endif%}
+    </li>
+    
+    {% endfor %}
+</ul>
+
+
+
+{% endblock content %}
+
