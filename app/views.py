@@ -86,3 +86,8 @@ def shoppingPage(request):
     products = Product.objects.all()
     context = { 'orders': orders, 'products': products}
     return render(request, 'shopping.html', context)
+
+
+def cartPage(request):
+    context = {}
+    return render(request, 'cart.html', context)

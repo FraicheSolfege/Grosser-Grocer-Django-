@@ -31,7 +31,7 @@ urlpatterns = [
     path("user/", userPage, name="user"),
     path("shopping/", shoppingPage, name="shopping"),
         # order pages
-    path("cart/", cart, name="cart"),
+    path("cart/", cartPage, name="cart"),
     path("order-status", statusPage, name="status"),
         # admin pages
     path('admin/', admin.site.urls),

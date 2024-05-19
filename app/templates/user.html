@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<div class="aboutUS">
     <h1>USER HOME PAGE</h1>
-    <p>{{ user.username }}</p>
-    {% comment %} orders {% endcomment %}
+    <img src="{% static 'images/grosser_grocer.png' %}" alt="profile image">
+    {% comment %} <p>{{ user.username }}</p>
     <h2>Orders</h2>
     <ul>
         {% for order in orders %}
             <li>{{ order.name }}</li>
         {% endfor %}
-    </ul>
+    </ul> {% endcomment %}
+</div>
+<p class="aboutUStext">
+    Welcome to Grosser Grocer, where we turn 'expired' into 'extraordinary'! At Grosser Grocer, we're not your average grocery store. We're pioneers in sustainability and resourcefulness, rescuing perfectly good food that others might overlook.
+
+Our shelves are stocked with a unique selection of items that may have exceeded their expiration dates but are still safe to eat. We believe in reducing food waste and giving overlooked products a second chance to shine. From slightly bruised fruits to yesterday's baked goods, every item has a story to tell and a chance to be enjoyed.
+
+But Grosser Grocer isn't just about offering affordable options; it's a community hub where people come together to support a common cause. We host workshops on food preservation, cooking classes for budget-friendly meals, and collaborate with local farms and producers to ensure nothing goes to waste.
+
+So, whether you're an eco-conscious shopper, a culinary adventurer, or simply looking to stretch your grocery budget, Grosser Grocer is the place for you. Join us in our mission to redefine 'gross' and embrace the beauty of imperfection!
+</p>
+
+<button class="shopNow"><a href="{% url 'shopping' %}"> Begin Shopping! </a> </button>
 {% endblock %}

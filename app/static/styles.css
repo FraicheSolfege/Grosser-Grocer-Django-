@@ -17,7 +17,7 @@ body{
     font-size: 20px;
     margin-right: 10px;
 }
-
+/* PRODUCT BROWSING PAGE  */
 .productsBrowser{
     display: flex;
     flex-direction: row;
@@ -27,4 +27,50 @@ body{
 .productIMGs{
     height: 200px;
     width: 150px;
+    padding: 50px
+}
+
+.productContainer{
+    display: flex;
+    overflow-x: auto;
+}
+
+
+/* ABOUT US PAGE  */
+.aboutUS{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    border: 1px solid black;
+    border-radius: 40px;
+    
+}
+
+.aboutUStext{
+    padding: 20px;
+    font-size: 50px;
+
+}
+
+
+/* .shopNow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 40px;
+} */
+
+.shopNow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 40px;
+    margin: 0 auto;
+    font-size: 50px;
 }
