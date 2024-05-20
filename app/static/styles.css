@@ -1,7 +1,7 @@
 body{
     background: #7abecc;
 }
-
+/* ------------------NAVBAR------------------ */
 .mainNav{
     background: #74cfbf;
     padding: 10px;
@@ -17,7 +17,7 @@ body{
     font-size: 20px;
     margin-right: 10px;
 }
-/* PRODUCT BROWSING PAGE  */
+/* ------------------PRODUCT BROWSING PAGE------------------  */
 .productsBrowser{
     display: flex;
     flex-direction: row;
@@ -35,34 +35,36 @@ body{
     overflow-x: auto;
 }
 
+.addToCartButton{
+    background: #74cfbf;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+}
 
-/* ABOUT US PAGE  */
+
+/* ------------------ABOUT US PAGE------------------  */
 .aboutUS{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 50px;
-    border: 1px solid black;
-    border-radius: 40px;
     
 }
 
 .aboutUStext{
-    padding: 20px;
+    background-color: #74cfbf;
+    padding: 40px;
     font-size: 50px;
+    border-radius: 20px;
+    margin: 0 auto;
+    box-shadow: 10px 10px 5px #888888;
+    padding-top: 20px;
 
 }
-
-
-/* .shopNow{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    border: 1px solid black;
-    border-radius: 40px;
-} */
 
 .shopNow{
     display: flex;
@@ -73,4 +75,9 @@ body{
     border-radius: 40px;
     margin: 0 auto;
     font-size: 50px;
+}
+
+.GG{
+    font-size: 50px;
+    color: #651f16;
 }

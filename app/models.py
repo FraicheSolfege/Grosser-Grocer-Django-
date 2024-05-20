@@ -19,6 +19,30 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+def create_product(name, price):
+    product = Product.objects.create(name=name, price=price)
+    return product
+
+def filter_product_by_id(id):
+    product = Product.objects.get(id=id)
+    return product
+
+def get_all_products():
+    products = Product.objects.all()
+    return products
+
+def update_product(id, name, price):
+    product = Product.objects.get(id=id)
+    product.name = name
+    product.price = price
+    product.save()
+    return product
+
+def delete_product(id):
+    product = Product.objects.get(id=id)
+    product.delete()
+
+
 class Order(models.Model):
     STATUS = (
         ('Pending', 'Pending'),
@@ -32,3 +56,27 @@ class Order(models.Model):
 
     def __str__(self):
         return self.product.name
+
+def create_order(customer, product, status):
+    order = Order.objects.create(customer=customer, product=product, status=status)
+    return order
+
+def filter_order_by_id(id):
+    order = Order.objects.get(id=id)
+    return order
+
+def get_all_orders():
+    orders = Order.objects.all()
+    return orders
+
+def update_order(id, customer, product, status):
+    order = Order.objects.get(id=id)
+    order.customer = customer
+    order.product = product
+    order.status = status
+    order.save()
+    return order
+
+def delete_order(id):
+    order = Order.objects.get(id=id)
+    order.delete()

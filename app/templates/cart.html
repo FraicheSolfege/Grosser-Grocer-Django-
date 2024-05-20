@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h1>Cart</h1>
+<div class="cartContainer">
+    <ul class="cartItems">
+        {% for product in products %}
+        <li>
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="productIMGs">
+            {{ product.name }} - {{ product.price }}
+            {% endif %}
+            <button class="removeFromCartButton">
+                {% comment %} <a href="{% url 'remove_from_cart' product.id %}">Remove from Cart</a> {% endcomment %}
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}

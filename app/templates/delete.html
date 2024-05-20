@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>DELETE PRODUCTS</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="name">Product Name:</label>
+    <select name="name" id="name">
+        {% for product in products %}
+        <option value="{{ product.name }}">{{ product.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Delete</button>
+{% endblock content%}

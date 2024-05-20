@@ -6,8 +6,11 @@
         {% for product in products %}
         <li>
             {% comment %} {% if product.image%} {% endcomment %}
-            <img src="{{ product.image.url }}" class="productIMGs">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="productIMGs">
             {{ product.name }} - {{ product.price }}
+            {% endif %}
+            <button class="addToCartButton"><a href="{% url 'cart' %}">Add to Cart</a></button>
             {% comment %} {% endif%} {% endcomment %}
         </li>
         
