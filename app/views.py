@@ -61,7 +61,7 @@ def register(request):
 
             group = Group.objects.get(name='customer')
             user.groups.add(group)
-  
+
             messages.success(request, 'Account was created for ' + username)
             return redirect('login')
         
@@ -138,12 +138,13 @@ def deletePage(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def updatePage(request):
-    order = Order.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
     form = OrderForm()
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('cart')
-    context = {'form': form, "order": order}
+    context = {'form': form, 'orders': orders, 'products': products}
     return render(request, 'update.html', context)

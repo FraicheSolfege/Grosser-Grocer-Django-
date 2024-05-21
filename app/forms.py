@@ -17,5 +17,5 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1','password2']   
 
-class DeleteForm(forms.Form):
-    id = forms.IntegerField(label='ID', required=True)
+# class DeleteForm(forms.Form):
+#     id = forms.IntegerField(label='ID', required=True)
