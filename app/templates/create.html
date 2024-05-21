@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 {% block content %}
-<h1>Create a Product</h1>
-<form method="POST" enctype="multipart/form-data">
+<h1 class="centerHead">Create a product</h1>
+<form method="POST" enctype="multipart/form-data" class="createForm">
     {% csrf_token %}
     <label for="name">Product Name:</label>
     <input type="text" name="name" id="name">

@@ -149,6 +149,8 @@ def deletePage(request):
 #     context = {'form': form, 'orders': orders, 'products': products}
 #     return render(request, 'update.html', context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def createPage(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -159,6 +161,8 @@ def createPage(request):
         return redirect('shopping')
     return render(request, 'create.html')
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def updatePage(request):
     if request.method == 'POST':
         product_name = request.POST.get('name')

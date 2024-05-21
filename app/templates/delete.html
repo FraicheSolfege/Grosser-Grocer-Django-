@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>DELETE PRODUCTS</h1>
-<form method="POST">
+<h1 class="centerHead">Delete a product</h1>
+<form method="POST" class="deleteForm">
     {% csrf_token %}
     <label for="name">Product Name:</label>
     <select name="name" id="name">

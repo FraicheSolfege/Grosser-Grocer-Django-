@@ -12,25 +12,43 @@ body{
     align-items: end;
 }
 
+.GROSS{
+    font-size: 50px;
+    color: #651f16;
+
+}
+
 #hello-msg{
     color: white;
     font-size: 20px;
     margin-right: 10px;
 }
 /* ------------------PRODUCT BROWSING PAGE------------------  */
+
 .productsBrowser{
     display: flex;
     flex-direction: row;
 
 }
 
-/* .productIMGs{
-    height: 200px;
-    width: 150px;
-    padding: 50px
-} */
+.productsMainText{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+    margin-right: 40%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: #74cfbf;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
 
 .productItem{
+    margin-left: 40%;
+    margin-right: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,6 +74,41 @@ body{
     font-size: 20px;
 }
 
+.productInfo{
+    padding: 20px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* .productInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgb(98, 72, 118);
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+    width: 70%;
+} */
+.productNameText{
+    font-size: 35px;
+    color: #651f16;
+    
+}
+
+.productPriceText{
+    font-size: 30px;
+    color: #651f16;
+}
+
+.productDescriptionText{
+    font-size: 30px;
+    color: #651f16;
+} 
+
 
 /* ------------------ABOUT US PAGE------------------  */
 .aboutUS{
@@ -67,10 +120,17 @@ body{
     
 }
 
+.aboutUS > img{
+    width: 30%;
+    height: 30%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
 .aboutUStext{
     background-color: #74cfbf;
     padding: 40px;
-    font-size: 50px;
+    font-size: 40px;
     border-radius: 20px;
     margin: 0 auto;
     box-shadow: 10px 10px 5px #888888;
@@ -82,14 +142,74 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    background-color: #74cfbf;
+    padding: 15px;
     border: 1px solid black;
     border-radius: 40px;
     margin: 0 auto;
     font-size: 50px;
+    box-shadow: 10px 10px 5px #888888;
+    margin-top: 20px;
 }
 
 .GG{
     font-size: 50px;
     color: #651f16;
+}
+
+
+/* ------------------CREATE/UPDATE/DELETE------------------  */
+.centerHead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #74cfbf;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+
+}
+/* ------------------CREATE PAGE------------------  */
+.createForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #74cfbf;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+/* ------------------UPDATE PAGE------------------  */
+.updateForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #74cfbf;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+/* ------------------DELETE PAGE------------------ */
+.deleteForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #74cfbf;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
 }

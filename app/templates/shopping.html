@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Browse Our Goods!</h1>
+<h1 class="productsMainText">Browse Our <span class="GROSS">GROSS GOODS</span></h1>
 <div class="productContainer">
     {% for product in products %}
     <div class="productItem">
@@ -8,9 +8,9 @@
             <img src="{{ product.image.url }}" class="productIMG">
         {% endif %}
         <div class="productInfo">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.price }}</p>
-            <p>{{ product.description }}</p>
+            <h3 class="productNameText">{{ product.name }}</h3>
+            <p class="productPriceText">${{ product.price }}</p>
+            <p clsas="productDescriptionText">{{ product.description }}</p>
             <button class="addToCartButton"><a href="{% url 'cart' %}">Add to Cart</a></button>
         </div>
     </div>
