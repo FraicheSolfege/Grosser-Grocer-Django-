@@ -34,6 +34,7 @@ urlpatterns = [
     path("cart/", cartPage, name="cart"),
     path("order-status", statusPage, name="status"),
         # admin pages
+    path("create-products", createPage, name="create"),
     path("update-products/", updatePage, name="update"),
     path("delete-products/", deletePage, name="delete"),
     path('admin/', admin.site.urls),

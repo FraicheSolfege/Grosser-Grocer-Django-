@@ -149,6 +149,16 @@ def deletePage(request):
 #     context = {'form': form, 'orders': orders, 'products': products}
 #     return render(request, 'update.html', context)
 
+def createPage(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        image = request.FILES.get('image')
+        product = create_product(name, image, description, price)
+        return redirect('shopping')
+    return render(request, 'create.html')
+
 def updatePage(request):
     if request.method == 'POST':
         product_name = request.POST.get('name')

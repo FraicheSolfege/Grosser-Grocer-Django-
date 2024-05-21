@@ -20,8 +20,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-def create_product(name, price):
-    product = Product.objects.create(name=name, price=price)
+def create_product(name, image, description,  price):
+    product = Product.objects.create(name=name, image=image, description=description, price=price)
     return product
 
 def filter_product_by_id(id):

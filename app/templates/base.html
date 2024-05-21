@@ -16,6 +16,7 @@
         <a href="{% url 'shopping' %}">Browse</a>
 
         {% if request.user.is_staff %}
+            <a href="{% url 'create' %}">Create a Product</a>
             <a href="{% url 'update' %}">Update Products</a>
             <a href="{% url 'delete' %}">Delete Products</a>
         {% endif %}
