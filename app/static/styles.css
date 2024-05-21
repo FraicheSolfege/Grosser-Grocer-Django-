@@ -24,10 +24,22 @@ body{
 
 }
 
-.productIMGs{
+/* .productIMGs{
     height: 200px;
     width: 150px;
     padding: 50px
+} */
+
+.productItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: #74cfbf;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .productContainer{
@@ -36,7 +48,7 @@ body{
 }
 
 .addToCartButton{
-    background: #74cfbf;
+    background: #7abecc;
     border: none;
     border-radius: 10px;
     padding: 10px;

@@ -2,20 +2,19 @@
 {% block content %}
 <h1>Browse Our Goods!</h1>
 <div class="productContainer">
-    <ul  class="productsBrowser">
-        {% for product in products %}
-        <li>
-            {% comment %} {% if product.image%} {% endcomment %}
-            {% if product.image %}
-                <img src="{{ product.image.url }}" class="productIMGs">
-            {{ product.name }} - {{ product.price }}
-            {% endif %}
+    {% for product in products %}
+    <div class="productItem">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="productIMG">
+        {% endif %}
+        <div class="productInfo">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.price }}</p>
+            <p>{{ product.description }}</p>
             <button class="addToCartButton"><a href="{% url 'cart' %}">Add to Cart</a></button>
-            {% comment %} {% endif%} {% endcomment %}
-        </li>
-        
-        {% endfor %}
-    </ul>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 

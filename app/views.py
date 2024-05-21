@@ -135,16 +135,42 @@ def deletePage(request):
 
 
 #  -----------------UPDATE PAGE-----------------
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+# @login_required(login_url='login')
+# @allowed_users(allowed_roles=['admin'])
+# def updatePage(request):
+#     orders = Order.objects.all()
+#     products = Product.objects.all()
+#     form = OrderForm()
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('cart')
+#     context = {'form': form, 'orders': orders, 'products': products}
+#     return render(request, 'update.html', context)
+
 def updatePage(request):
-    orders = Order.objects.all()
-    products = Product.objects.all()
-    form = OrderForm()
     if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('cart')
-    context = {'form': form, 'orders': orders, 'products': products}
-    return render(request, 'update.html', context)
+        product_name = request.POST.get('name')
+        new_name = request.POST.get('new_name')
+        new_description = request.POST.get('description')
+        new_price = request.POST.get('price')
+        # Assuming 'image' is a FileField or ImageField
+        new_image = request.FILES.get('image')
+
+        # Get the product to update
+        product = Product.objects.get(name=product_name)
+
+        # Update the product
+        product.name = new_name
+        product.description = new_description
+        product.price = new_price
+        if new_image is not None:  # Only update the image if a new one was provided
+            product.image = new_image
+        product.save()
+
+        return redirect('shopping')
+
+    else:
+        products = Product.objects.all()
+        return render(request, 'update.html', {'products': products})

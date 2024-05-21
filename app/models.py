@@ -13,8 +13,8 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
-    image = models.ImageField(upload_to='' ,null=True, blank=True)
-    # description = models.CharField(max_length=200, null=True)
+    image = models.ImageField(upload_to='', null=True, blank=True)
+    description = models.CharField(max_length=200, null=True)
     price = models.FloatField(null=True)
 
     def __str__(self):
@@ -32,10 +32,11 @@ def get_all_products():
     products = Product.objects.all()
     return products
 
-def update_product(id, new_name, new_price):
+def update_product(id, new_name, new_description, new_price):
     product = Product.objects.get(id=id)
     product.name = new_name
     product.price = new_price
+    product.description = new_description
     product.save()
     return product
 
