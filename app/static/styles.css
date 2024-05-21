@@ -31,6 +31,10 @@ body{
 
 }
 
+.productItem:hover {
+    background: #8ae2d8;
+}
+
 .productsMainText{
     display: flex;
     flex-direction: column;
@@ -72,6 +76,8 @@ body{
     padding: 10px;
     margin: 10px;
     font-size: 20px;
+    cursor: pointer;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .productInfo{
@@ -80,6 +86,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    /* margin : 50px; */
 }
 /* .productInfo{
     display: flex;
@@ -107,11 +115,17 @@ body{
 .productDescriptionText{
     font-size: 30px;
     color: #651f16;
+    background-color: #7abecc;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+    border: 1px solid black;
 } 
 
 
 /* ------------------ABOUT US PAGE------------------  */
 .aboutUS{
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +144,7 @@ body{
 .aboutUStext{
     background-color: #74cfbf;
     padding: 40px;
-    font-size: 40px;
+    font-size: 30px;
     border-radius: 20px;
     margin: 0 auto;
     box-shadow: 10px 10px 5px #888888;
@@ -160,6 +174,7 @@ body{
 
 /* ------------------CREATE/UPDATE/DELETE------------------  */
 .centerHead{
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,6 +203,7 @@ body{
 
 /* ------------------UPDATE PAGE------------------  */
 .updateForm{
+    /* margin-top: 10%; */
     display: flex;
     flex-direction: column;
     align-items: center;
