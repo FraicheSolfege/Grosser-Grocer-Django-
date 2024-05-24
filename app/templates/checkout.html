@@ -2,7 +2,9 @@
 {%block content%}
 <div class="allDone">
 <h1>Thank you for your order!</h1>
+{% if order %}
 <p>Your order number is {{order.id}}</p>
-<p>Your order total was ${{order.total_price}}</p>
+<p>Your order total was ${{total_price|floatformat:2 }}</p>
+{% endif %}
 </div>
 {%endblock%}

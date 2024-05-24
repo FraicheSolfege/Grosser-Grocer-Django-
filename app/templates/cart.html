@@ -13,9 +13,10 @@
 {% empty %}
     <p>Your cart is empty.</p>
 {% endfor %}
+<button class="checkout"><a href="{% url 'clear_cart' %}">Clear Cart</a></button>
 </div>
 <div class="total">
-    <p>Total Price: ${{ total_price }}</p>
+    <p>Total Price: ${{ total_price|floatformat:2 }}</p>
     <button class="checkout"><a href="{% url 'checkout' %}">Checkout</a></button>
 </div>
  

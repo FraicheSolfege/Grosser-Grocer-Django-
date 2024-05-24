@@ -34,6 +34,7 @@ urlpatterns = [
     path("cart/", cartPage, name="cart"),
     path("add-to-cart/<int:product_id>/", addToCart, name="add_to_cart"),
     path("remove-from-cart/<int:product_id>/", removeFromCart, name="remove_from_cart"),
+    path("clear-cart/", clearCart, name="clear_cart"),
     path("checkout/", checkoutPage, name="checkout"),
     path("order-status", statusPage, name="status"),
         # admin pages

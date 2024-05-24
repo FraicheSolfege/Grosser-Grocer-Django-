@@ -154,6 +154,16 @@ def addToCart(request, product_id):
     # context = {'cart': cart}
     # return render(request, 'cart', context)
 
+def removeFromCart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    order = Order.objects.get(product=product, customer=request.user, status='Pending')
+    if order.quantity == 1:
+        order.delete()
+    else:
+        order.quantity -= 1
+        order.save()
+    return redirect('cart')
+
 def clearCart(request):
     orders = Order.objects.filter(customer=request.user, status='Pending')
     orders.delete()
@@ -185,15 +195,6 @@ def clearCart(request):
 #     }
 #     return render(request, 'cart.html', context)
 
-def removeFromCart(request, product_id):
-    product = Product.objects.get(id=product_id)
-    order = Order.objects.get(product=product, customer=request.user, status='Pending')
-    order.quantity -= 1
-    if order.quantity == 0:
-        order.delete()
-    else:
-        order.save()
-    return redirect('cart')
 
 def checkoutPage(request):
     if request.method == "POST":
@@ -203,7 +204,7 @@ def checkoutPage(request):
             order.save()
         return redirect('cart')
     orders = Order.objects.filter(customer=request.user, status='Pending')
-    total_price = sum([order.product.price for order in orders])
+    total_price = sum(order.product.price * order.quantity for order in orders)
     context = {'orders': orders, 'total_price': total_price}
     return render(request, 'checkout.html', context)
 
