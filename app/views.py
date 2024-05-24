@@ -141,7 +141,7 @@ def shoppingPage(request):
 #     return render(request, 'cart.html', context)
 def cartPage(request):
     orders = Order.objects.filter(customer=request.user)
-    total_price = sum([order.product.price for order in orders])
+    total_price = sum([order.product.price * order.quantity for order in orders])
     return render(request, 'cart.html', {'orders': orders, 'total_price': total_price})
 
 def addToCart(request, product_id):
@@ -149,9 +149,10 @@ def addToCart(request, product_id):
     order, created = Order.objects.get_or_create(product=product, customer=request.user, status='Pending')
     order.quantity += 1
     order.save()
-    cart = Order.objects.filter(customer=request.user, status='Pending')
-    context = {'cart': cart}
-    return render(request, 'cart.html', context)
+    return redirect('cart')
+    # cart = Order.objects.filter(customer=request.user, status='Pending')
+    # context = {'cart': cart}
+    # return render(request, 'cart', context)
 
 def clearCart(request):
     orders = Order.objects.filter(customer=request.user, status='Pending')
