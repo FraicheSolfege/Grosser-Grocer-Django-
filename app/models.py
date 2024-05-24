@@ -53,14 +53,14 @@ class Order(models.Model):
     )
     customer = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    quantity = models.IntegerField(default=0, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
 
     def __str__(self):
         return self.product.name
 
-def create_order(customer, product, status):
-    order = Order.objects.create(customer=customer, product=product, status=status)
+def create_order(customer, product, quantity, status):
+    order = Order.objects.create(customer=customer, product=product, quantity = quantity, status=status)
     return order
 
 def filter_order_by_id(id):
@@ -71,10 +71,11 @@ def get_all_orders():
     orders = Order.objects.all()
     return orders
 
-def update_order(id, customer, product, status):
+def update_order(id, customer, product, quantity, status):
     order = Order.objects.get(id=id)
     order.customer = customer
     order.product = product
+    order.quantity = quantity
     order.status = status
     order.save()
     return order

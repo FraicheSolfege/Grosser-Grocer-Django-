@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Cart</h1>
+
+<div class="product-list">
+    <h1>Your Shopping Cart</h1>
+{% for order in orders %}
+<div class="product-item">
+    <p>{{ order.product.name }} ({{ order.quantity }})</p>
+    <p>Price: ${{ order.product.price }}</p>
+    <a href="{% url 'remove_from_cart' order.id %}">Remove</a>
+</div>
+{% empty %}
+    <p>Your cart is empty.</p>
+{% endfor %}
+</div>
+<div class="total">
+    <p>Total Price: ${{ total_price }}</p>
+    <button class="checkout"><a href="{% url 'checkout' %}">Checkout</a></button>
+</div>
+ 
+
+
+
+{% comment %} <h1>Cart</h1>
     
     {% if cart %}
         <table>
@@ -21,8 +42,9 @@
             {% endfor %}
         </table>
         <p>Total: ${{ total }}</p>
-        <button><a href="{% url 'checkout' %}">Checkout</a></button>
+        <button><a href="{% url 'cart' %}">Checkout</a></button>
+        <button><a href="{% url 'cart' %}">Clear Cart</a></button>
     {% else %}
         <p>Your cart is empty</p>
-    {% endif %}
+    {% endif %} {% endcomment %}
 {% endblock content %}

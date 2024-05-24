@@ -32,6 +32,9 @@ urlpatterns = [
     path("shopping/", shoppingPage, name="shopping"),
         # order pages
     path("cart/", cartPage, name="cart"),
+    path("add-to-cart/<int:product_id>/", addToCart, name="add_to_cart"),
+    path("remove-from-cart/<int:product_id>/", removeFromCart, name="remove_from_cart"),
+    path("checkout/", checkoutPage, name="checkout"),
     path("order-status", statusPage, name="status"),
         # admin pages
     path("admin-register/", admin_register, name="admin_register"),

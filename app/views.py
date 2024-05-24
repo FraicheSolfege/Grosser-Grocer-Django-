@@ -103,9 +103,9 @@ def userPage(request):
 
 #  -----------------CART PAGE-----------------
 
-def cart(request):
-    context = {}
-    return render(request, 'cart.html', context)
+# def cart(request):
+#     context = {}
+#     return render(request, 'cart.html', context)
 
 
 
@@ -127,13 +127,84 @@ def shoppingPage(request):
 
 
 # -----------------CART PAGE-----------------
+# def cartPage(request):
+#     if request.method == "POST":
+#         product_id = request.POST.get('product_id')
+#         product = Product.objects.get(id=product_id)
+#         order, created = Order.objects.get_or_create(product=product, customer=request.user, status='Pending')
+#         order.save()
+#         return redirect('cart')
+#     context = {
+#         'products': Product.objects.all(),
+#         'orders': Order.objects.all()
+#     }
+#     return render(request, 'cart.html', context)
 def cartPage(request):
-    context = {
-        'products': Product.objects.all(),
-        'order': Order.objects.all()
-    }
+    orders = Order.objects.filter(customer=request.user)
+    total_price = sum([order.product.price for order in orders])
+    return render(request, 'cart.html', {'orders': orders, 'total_price': total_price})
+
+def addToCart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    order, created = Order.objects.get_or_create(product=product, customer=request.user, status='Pending')
+    order.quantity += 1
+    order.save()
+    cart = Order.objects.filter(customer=request.user, status='Pending')
+    context = {'cart': cart}
     return render(request, 'cart.html', context)
 
+def clearCart(request):
+    orders = Order.objects.filter(customer=request.user, status='Pending')
+    orders.delete()
+    return redirect('cart')
+
+# def cartPage(request):
+#     if request.method == "POST":
+#         product_id = request.POST.get('product_id')
+#         product = Product.objects.get(id=product_id)
+#         order, created = Order.objects.get_or_create(product=product, customer=request.user, status='Pending')
+#         order.save()
+#         return redirect('cart')
+#     context = {
+#         'products': Product.objects.all(),
+#         'order': Order.objects.all()
+#     }
+#     return render(request, 'cart.html', context)
+
+# def addToCart(request, product_id):
+#     if request.method == "POST":
+#         product_id = request.POST.get('product_id')
+#         product = Product.objects.get(id=product_id)
+#         order = Order.objects.create(product=product, customer=request.user, status='Pending')
+#         order.save()
+#         return redirect('cart')
+#     context = {
+#         'products': Product.objects.all(),
+#         'order': Order.objects.all()
+#     }
+#     return render(request, 'cart.html', context)
+
+def removeFromCart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    order = Order.objects.get(product=product, customer=request.user, status='Pending')
+    order.quantity -= 1
+    if order.quantity == 0:
+        order.delete()
+    else:
+        order.save()
+    return redirect('cart')
+
+def checkoutPage(request):
+    if request.method == "POST":
+        orders = Order.objects.filter(customer=request.user, status='Pending')
+        for order in orders:
+            order.status = 'Out for delivery'
+            order.save()
+        return redirect('cart')
+    orders = Order.objects.filter(customer=request.user, status='Pending')
+    total_price = sum([order.product.price for order in orders])
+    context = {'orders': orders, 'total_price': total_price}
+    return render(request, 'checkout.html', context)
 
 # -----------------DELETE PAGE-----------------
 @login_required(login_url='login')
@@ -187,13 +258,10 @@ def updatePage(request):
         new_name = request.POST.get('new_name')
         new_description = request.POST.get('description')
         new_price = request.POST.get('price')
-        # Assuming 'image' is a FileField or ImageField
         new_image = request.FILES.get('image')
 
-        # Get the product to update
         product = Product.objects.get(name=product_name)
 
-        # Update the product
         product.name = new_name
         product.description = new_description
         product.price = new_price
