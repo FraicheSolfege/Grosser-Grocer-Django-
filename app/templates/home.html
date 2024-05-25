@@ -2,8 +2,8 @@
 {% block content %}
     <h1 class="loggedIn"> ADMIN HOME PAGE </h1>
     <p class="loggedIn"> Currently logged in as {{ request.user }} </p>
-    <h2 class="loggedIn"> Users </h2>
-    <ul class="loggedIn">
+    {% comment %} <h2 class="loggedIn"> Users </h2> {% endcomment %}
+    <ul class="loggedIn"> USERS
         {% comment %} {% for user in users %}
             <li> {{ user.username }} </li> {% endcomment %}
         {%for user in users %}
@@ -17,14 +17,14 @@
         {% comment %} {% endfor %} {% endcomment %}
 
     </ul>
-    <h2 class="loggedIn"> Orders </h2>
-    <ul class="loggedIn">
+    {% comment %} <h2 class="loggedIn"> Orders </h2> {% endcomment %}
+    <ul class="loggedIn"> ORDERS
         {% for order in orders %}
             <li> {{ order.id }} </li>
         {% endfor %}
     </ul>
-    <h2 class="loggedIn">Products</h2>
-    <ul class="loggedIn">
+    {% comment %} <h2 class="loggedIn">Products</h2> {% endcomment %}
+    <ul class="loggedIn"> PRODUCTS
         {% for product in products %}
             <li>  {{ product.name }}: ${{ product.price }} - {{product.description}} </li>
         {% endfor %}
