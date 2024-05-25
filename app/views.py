@@ -19,7 +19,8 @@ def home(request):
     # passing users into context 
     orders = Order.objects.all()
     products = Product.objects.all()
-    context = {'orders': orders, 'products': products}
+    users = User.objects.all()
+    context = {'orders': orders, 'products': products, 'users': users}
     return render(request, 'home.html', context)
 
 
