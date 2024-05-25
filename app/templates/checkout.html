@@ -2,9 +2,9 @@
 {%block content%}
 <div class="allDone">
 <h1>Thank you for your order!</h1>
-{% if order %}
+{% for order in orders %}
 <p>Your order number is {{order.id}}</p>
 <p>Your order total was ${{total_price|floatformat:2 }}</p>
-{% endif %}
+{% endfor%}
 </div>
 {%endblock%}

@@ -171,6 +171,21 @@ body{
     color: #651f16;
 }
 
+/* -------------------ADMIN HOME------------------------ */
+.loggedIn{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #74cfbf;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
 
 /* ------------------CREATE/UPDATE/DELETE------------------  */
 .centerHead{

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1> ADMIN HOME PAGE </h1>
-    <p> {{ request.user }} </p>
-    <h2> Users </h2>
-    <ul>
+    <h1 class="loggedIn"> ADMIN HOME PAGE </h1>
+    <p class="loggedIn"> Currently logged in as {{ request.user }} </p>
+    <h2 class="loggedIn"> Users </h2>
+    <ul class="loggedIn">
         {% comment %} {% for user in users %}
             <li> {{ user.username }} </li> {% endcomment %}
         {%for user in users %}
@@ -17,14 +17,14 @@
         {% comment %} {% endfor %} {% endcomment %}
 
     </ul>
-    <h2> Orders </h2>
-    <ul>
+    <h2 class="loggedIn"> Orders </h2>
+    <ul class="loggedIn">
         {% for order in orders %}
             <li> {{ order.id }} </li>
         {% endfor %}
     </ul>
-    <h2>Products</h2>
-    <ul>
+    <h2 class="loggedIn">Products</h2>
+    <ul class="loggedIn">
         {% for product in products %}
             <li>  {{ product.name }}: ${{ product.price }} - {{product.description}} </li>
         {% endfor %}
